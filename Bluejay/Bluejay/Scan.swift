@@ -8,7 +8,11 @@
 
 import CoreBluetooth
 import Foundation
+#if os(macOS)
+import AppKit
+#else
 import UIKit
+#endif
 
 /// A scan operation.
 class Scan: Queueable {
@@ -109,6 +113,7 @@ class Scan: Queueable {
 
         manager.scanForPeripherals(withServices: services, options: [CBCentralManagerScanOptionAllowDuplicatesKey: allowDuplicates])
 
+        #if os(iOS)
         if allowDuplicates {
             NotificationCenter.default.addObserver(
                 self,
@@ -126,6 +131,7 @@ class Scan: Queueable {
                 object: nil
             )
         }
+        #endif
 
         debugLog("Scanning started.")
     }

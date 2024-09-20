@@ -5,7 +5,7 @@
 //  Created by Jeremy Chiang on 2018-12-11.
 //  Copyright © 2018 Steamclock Software. All rights reserved.
 //
-
+#if os(iOS)
 import Foundation
 import UIKit
 
@@ -54,12 +54,13 @@ public struct BackgroundRestoreConfig {
     }
 }
 
+/// An alias to make it clearer that the dictionary should be the launch options from `UIApplicationDelegate`.
+public typealias LaunchOptions = [UIApplication.LaunchOptionsKey: Any]?
+#endif
+
 /**
  * An alias to make it clearer that the string should be some kind of identifier for restoration, and not just any arbitrary string.
  *
  * - Note: Please provide a unique restore identifier for CoreBluetooth. See [Apple documentation](https://developer.apple.com/reference/corebluetooth/cbcentralmanageroptionrestoreidentifierkey) for more details.
  */
 public typealias RestoreIdentifier = String
-
-/// An alias to make it clearer that the dictionary should be the launch options from `UIApplicationDelegate`.
-public typealias LaunchOptions = [UIApplication.LaunchOptionsKey: Any]?

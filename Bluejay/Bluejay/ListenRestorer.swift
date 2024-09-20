@@ -7,12 +7,18 @@
 //
 
 import Foundation
+#if os(macOS)
+import AppKit
+public typealias ApplicationDelegate = NSApplicationDelegate
+#else
 import UIKit
+public typealias ApplicationDelegate = UIApplicationDelegate
+#endif
 
 /**
  * Protocol for handling a listen event that does not have a callback due to background restoration.
  */
-public protocol ListenRestorer: UIApplicationDelegate {
+public protocol ListenRestorer: ApplicationDelegate {
 
     /**
      * Called whenever there is an unhandled listen.

@@ -6,6 +6,7 @@ let package = Package(
     name: "Bluejay",
     platforms: [
         .iOS(.v11),
+        .macOS(.v10_15)
     ],
     products: [
         .library(
